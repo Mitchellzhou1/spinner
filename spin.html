@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #e3e1e1;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #output {
+            font-size: 1.5em;
+            margin-top: 50px;
+        }
+
+        #output:hover {
+            transform: scale(1.7);
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Random Generator</h1>
+    <label for="visitorName">Enter your name: </label>
+    <input type="text" id="visitorName">
+    <button onclick="restyle()">Generate</button>
+    <p id="output"></p>
+
+    <script>
+        const responses = [
+            "go make some new friends today!!",
+            "sing for a stranger :)",
+            "reach out to a old friend.",
+            "call someone in your family and catch up with them.",
+            "tell the person next to you a funny joke.",
+            "have fun... stop thinking so much about what others think!",
+            "you are loved.",
+            "keep fighting for what you believe in.",
+            "work out in the gym more.",
+            "learn to play the piano today.",
+            "read a book today"
+        ];
+
+        function restyle() {
+            const visitorName = document.getElementById('visitorName').value;
+            const randomResponse = responses[Math.floor((Math.random() * 1000) % responses.length)];
+
+            const outputElement = document.getElementById('output');
+            outputElement.textContent = `${visitorName}, ${randomResponse}`;
+            outputElement.style.color = newColor();
+            outputElement.style.fontWeight = newFontWeight();
+            outputElement.style.fontFamily = getRandomFont();
+        }
+
+        function newColor() {
+            const colors = ['black', 'blue', 'red', 'green', 'orange'];
+            return colors[Math.floor((Math.random() * 1000) % colors.length)];
+        }
+
+        function newFontWeight() {
+            return Math.random() < 0.5 ? 'normal' : 'bold';
+        }
+
+        function getRandomFont() {
+            const fonts = ['Arial', 'Verdana', 'Tahoma', 'Helvetica', 'Courier New', 'Times New Roman'];
+            return fonts[Math.floor((Math.random() * 1000) % fonts.length)];
+        }
+    </script>
+</body>
+</html>
